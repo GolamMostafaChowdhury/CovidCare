@@ -1,0 +1,103 @@
+﻿@page
+@model RegisterModel
+@if (User.IsInRole(CovidCare.WC.AdminRole)) { 
+    <h1> Register an Admin Account </h1>
+}
+else{
+    <h1> Register</h1>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Input.NID" ></label>
+                <input asp-for="Input.NID" placeholder="Enter your NID" class="form-control" />
+                <span asp-validation-for="Input.NID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.FullName"></label>
+                <input asp-for="Input.FullName" placeholder="Enter your full name" class="form-control" />
+                <span asp-validation-for="Input.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.DOB"></label>
+                <input asp-for="Input.DOB" placeholder="Enter your age" class="form-control" />
+                <span asp-validation-for="Input.DOB" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.Gender" class="control-label"></label>
+                <select asp-for="Input.Gender" class="form-control">
+                    <option value="" selected disabled>Please select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Do not want to mention">Do not want to mention</option>
+                </select>
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.VaccinationStatus" class="control-label"></label>
+                <select asp-for="Input.VaccinationStatus" class="form-control">
+                    <option value="" selected disabled>Please select</option>
+                    <option value="Fully Vaccinated">Fully Vaccinated</option>
+                    <option value="First dose completed">First dose completed</option>
+                    <option value="Do not take any dose yet">Do not take any dose yet</option>>
+                </select>
+                <span asp-validation-for="Input.VaccinationStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PosDate"></label>
+                <input asp-for="Input.PosDate" placeholder="When you got tested positive" class="form-control" />
+                <span asp-validation-for="Input.PosDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input asp-for="Input.PhoneNumber" placeholder="Enter your phone number" class="form-control" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Address"></label>
+                <input asp-for="Input.Address" placeholder="Enter your adress" class="form-control" />
+                <span asp-validation-for="Input.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Description"></label>
+                <input asp-for="Input.Description" placeholder="Any diseases you want to mention" class="form-control" />
+                <span asp-validation-for="Input.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" placeholder="Enter your email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" placeholder="Enter password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" placeholder="Confirm your password" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            @if (User.IsInRole(CovidCare.WC.AdminRole))
+            {
+                <button type="submit" class="btn btn-warning">Register Admin User </button>
+            }
+            else
+            {
+        <button type="submit" class="btn btn-primary">Register </button>
+            }
+            
+        </form>
+    </div>
+    
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
